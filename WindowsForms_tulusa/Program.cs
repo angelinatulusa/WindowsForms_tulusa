@@ -16,7 +16,7 @@ namespace WindowsForms_tulusa
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MinuOmaVorm());
+            Application.Run(new MinuOmaVorm()); 
         }
     }
 }

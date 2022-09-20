@@ -13,6 +13,8 @@ namespace WindowsForms_tulusa
 {
     public partial class MinuOmaVorm : Form
     {
+        Random random = new Random();
+
         TreeView puu;
         Button nupp;
         Button nupp2;
@@ -178,7 +180,7 @@ namespace WindowsForms_tulusa
                     Location = new Point(x, y),
                     Size = new Size(100, 100),
                     SizeMode = PictureBoxSizeMode.Zoom
-                };
+                }; 
                 rnupp1.CheckedChanged += new EventHandler(Rnuppud_Changed);
                 rnupp2.CheckedChanged += new EventHandler(Rnuppud_Changed);
                 rnupp3.CheckedChanged += new EventHandler(Rnuppud_Changed);
@@ -207,15 +209,29 @@ namespace WindowsForms_tulusa
                     Width=50,
                     Height=30,
                     Location=new Point(350,475),
-                    BackColor = Color.Lime,
+                    BackColor = Color.Lavender,
                 };
-                aeg = new Timer();
+                nupp3.Click += Nupp3_Click1;
+                /*aeg = new Timer();
                 aeg.Enabled = true;
-                aeg.Tick += Aeg_Tick;
+                aeg.Tick += Aeg_Tick;*/
                 this.Controls.Add(riba);
                 this.Controls.Add(nupp3);
 
             }
+        }
+
+        private void Nupp3_Click1(object sender, EventArgs e)
+        {
+            riba.PerformStep();
+        }
+
+        private void Nupp3_Click(object sender, EventArgs e)
+        {
+            aeg = new Timer();
+            aeg.Enabled = true;
+            aeg.Tick += Aeg_Tick;
+            
         }
 
         private void Aeg_Tick(object sender, EventArgs e)
@@ -383,8 +399,6 @@ namespace WindowsForms_tulusa
             silt.BackColor = Color.LightSalmon;
             silt.ForeColor = Color.DarkBlue;
         }
-
-        Random random = new Random();
         private void Nupp_Click(object sender, EventArgs e)
         {
             nupp.BackColor= Color.LightYellow;

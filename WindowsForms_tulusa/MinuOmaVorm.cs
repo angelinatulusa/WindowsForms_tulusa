@@ -26,6 +26,7 @@ namespace WindowsForms_tulusa
         PictureBox pilt;
         ProgressBar riba;
         Timer aeg;
+        TextBox tekst;
         int x = 150;
         int y = 450;
         public MinuOmaVorm()
@@ -44,6 +45,12 @@ namespace WindowsForms_tulusa
             oksad.Nodes.Add(new TreeNode("Märkeruut-Checkbox"));
             oksad.Nodes.Add(new TreeNode("Radionupp-Radiobutton"));
             oksad.Nodes.Add(new TreeNode("Edenemisriba-ProgressBar"));
+            oksad.Nodes.Add(new TreeNode("Tekstkast - TextBox"));
+            oksad.Nodes.Add(new TreeNode("OmaVorm - MyForm"));
+            /*puu.AfterSelect += Puu_AfterSelect1;
+            puu.Nodes.Add(oksad);
+            puu.DoubleClick += Puu_DoubleClick;
+            this.Controls.Add(puu);*/
 
             puu.AfterSelect += Puu_AfterSelect;
             puu.Nodes.Add(oksad);
@@ -51,6 +58,30 @@ namespace WindowsForms_tulusa
 
 
         }
+
+        /*private void Puu_DoubleClick(object sender, EventArgs e)
+        {
+            if (t == true)
+            {
+                tekst.Enabled = false;
+            }
+            else
+            {
+                tekst.Enabled = true;
+            }
+        }
+
+        private void Puu_AfterSelect1(object sender, TreeViewEventArgs e)
+        {
+            if (t == true)
+            {
+                tekst.Enabled = false;
+            }
+            else
+            {
+                tekst.Enabled = true; 
+            }
+        }*/
 
         private void Puu_AfterSelect(object sender, TreeViewEventArgs e)
         {
@@ -61,7 +92,6 @@ namespace WindowsForms_tulusa
                 Size = new Size(100, 20),
                 Location = new Point(200, 0)
             };
-
             mruut1 = new CheckBox
 
             {
@@ -79,7 +109,13 @@ namespace WindowsForms_tulusa
                 Width = 100,
                 Height = 25
             };
-            
+            tekst = new TextBox
+            {
+                Font = new Font("Arial", 34, FontStyle.Italic),
+                Location = new Point(350, 400),
+                Enabled = true
+            };
+
             if (e.Node.Text== "Nupp-Button")
             {
                 nupp = new Button();
@@ -176,11 +212,11 @@ namespace WindowsForms_tulusa
                 
                 pilt = new PictureBox
                 {
-                    Image = new Bitmap("tthk.png"),
+                    Image = new Bitmap(@"..\..\tthk.png"),
                     Location = new Point(x, y),
                     Size = new Size(100, 100),
                     SizeMode = PictureBoxSizeMode.Zoom
-                }; 
+                };  
                 rnupp1.CheckedChanged += new EventHandler(Rnuppud_Changed);
                 rnupp2.CheckedChanged += new EventHandler(Rnuppud_Changed);
                 rnupp3.CheckedChanged += new EventHandler(Rnuppud_Changed);
@@ -216,11 +252,32 @@ namespace WindowsForms_tulusa
                 aeg.Enabled = true;
                 aeg.Tick += Aeg_Tick;*/
                 this.Controls.Add(riba);
-                this.Controls.Add(nupp3);
+                this.Controls.Add(nupp3); 
+            }
+            else if (e.Node.Text== "Tekstkast - TextBox")
+            {
+                //tekst.MouseDoubleClick += Tekst_MouseDoubleClick; 
 
+                this.Controls.Add(tekst);
+            }
+            else if (e.Node.Text== "OmaVorm - MyForm")
+            {
+                OmaVorm oma = new OmaVorm("Muusikat kuulamine","Vajuta siia","Faili nimi");
+                oma.ShowDialog();
             }
         }
-
+        bool t = false;
+        private void Tekst_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (t == true)
+            {
+                tekst.Enabled = false;
+            }
+            else
+            {
+                tekst.Enabled = true;
+            }
+        }
         private void Nupp3_Click1(object sender, EventArgs e)
         {
             riba.PerformStep();
@@ -346,7 +403,6 @@ namespace WindowsForms_tulusa
                 Width = 900;
             }
         }
-
         private void Mruut1_CheckedChanged(object sender, EventArgs e)
         {
             if (mruut1.Checked==true&&mruut2.Checked==true)
@@ -370,7 +426,6 @@ namespace WindowsForms_tulusa
                 Width = 900;
             }
         }
-
         /*private void Mruut2_Click(object sender, EventArgs e)
         {
             mruut1.ForeColor = Color.White;
@@ -387,8 +442,6 @@ namespace WindowsForms_tulusa
             Width = 800;
             
         }*/
-
-
         private void Silt_MouseEnter(object sender, EventArgs e)
         {
             silt.BackColor = Color.Transparent;//prozracnii cvet

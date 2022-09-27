@@ -21,7 +21,7 @@ namespace WindowsForms_tulusa
                 Text=Nupp,
                 Location=new System.Drawing.Point(50,50),
                 Size=new System.Drawing.Size(100,50),
-                BackColor=System.Drawing.Color.LightSteelBlue,
+                BackColor=System.Drawing.Color.LightGray,
                 
             };
             nupp.Click += Nupp_Click;
@@ -29,20 +29,20 @@ namespace WindowsForms_tulusa
             {
                 Text= Fail,
                 Location = new System.Drawing.Point(50, 150),
-                Size = new System.Drawing.Size(150, 50),
+                Size = new System.Drawing.Size(100, 25),
                 BackColor = System.Drawing.Color.LightSkyBlue,
             };
             nupp1 = new RadioButton//радиокнопка с текстом mixkit, её расположение, размер и цвет фона
             {
                 Text="mixkit",
-                Location=new System.Drawing.Point(50,200),
+                Location=new System.Drawing.Point(50,175),
                 Size=new System.Drawing.Size(100,20),
                 BackColor= System.Drawing.Color.LightCyan,
             };
             nupp2 = new RadioButton//радиокнопка с текстом birds, её расположение, размер и цвет фона
             {
                 Text = "birds",
-                Location = new System.Drawing.Point(150, 200),
+                Location = new System.Drawing.Point(150, 175),
                 Size = new System.Drawing.Size(100, 20),
                 BackColor = System.Drawing.Color.LightCyan,
             };
@@ -62,8 +62,15 @@ namespace WindowsForms_tulusa
                     using (var muusika=new SoundPlayer(@"..\..\mixkit.wav"))
                     {
                         muusika.Play();
-                        MessageBox.Show("mängib: mixkit","Muusika");
-                        
+                        var v=MessageBox.Show("mängib: mixkit","Muusika", MessageBoxButtons.OKCancel);
+                        if (v == DialogResult.OK)
+                        {
+                            muusika.Stop();
+                        }
+                        else
+                        {
+                            muusika.Stop();
+                        }
                     }
                     nupp1.Checked=false;//убирается выбор с этой кнопки и можно потом повторно проиграть ту же песню
                 }
@@ -72,8 +79,15 @@ namespace WindowsForms_tulusa
                     using (var muusika = new SoundPlayer(@"..\..\birds.wav"))
                     {
                         muusika.Play();
-                        MessageBox.Show("mängib: birds","Muusika");
-                        
+                        var v=MessageBox.Show("mängib: birds","Muusika",MessageBoxButtons.OKCancel);
+                        if (v==DialogResult.OK)
+                        {
+                            muusika.Stop();
+                        }
+                        else
+                        {
+                            muusika.Stop();
+                        }
                     }
                     nupp2.Checked=false;//убирается выбор с этой кнопки и можно потом повторно проиграть ту же песню
                 }

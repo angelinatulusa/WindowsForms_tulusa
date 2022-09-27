@@ -262,7 +262,7 @@ namespace WindowsForms_tulusa
             }
             else if (e.Node.Text== "OmaVorm - MyForm")
             {
-                OmaVorm oma = new OmaVorm("Muusikat kuulamine","Vajuta siia","Faili nimi");
+                OmaVorm oma = new OmaVorm("Muusikat kuulamine","Lülita muusika sisse","Vali muusikat:");
                 oma.ShowDialog();
             }
         }
